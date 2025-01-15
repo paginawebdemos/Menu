@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador - Luna Mágica</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="Imagenes/Red and Yellow Catering Flat Illustrative Food Place Logo (1).png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.0.0/tsparticles.bundle.min.js"></script>
+    <script type="module" src="check-auth.js"></script>
+    <script type="module" src="admin.js"></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <div id="admin-section">
+        <h3>👨‍🍳 Administrador</h3>
+
+        <form id="add-dish-form">
+            <input type="text" id="dish-name" placeholder="Nombre del plato" required>
+            <select id="dish-category" required>
+                <option value="" disabled selected>Selecciona una categoría</option>
+                <option value="Entradas">Entradas</option>
+                <option value="Platos principales">Platos principales</option>
+                <option value="Postres">Postres</option>
+                <option value="Bebidas">Bebidas</option>
+            </select>
+            <input type="text" id="dish-price" placeholder="Precio" required>
+            <input type="file" id="dish-img-upload" accept="image/*" required>
+            <textarea id="dish-description" placeholder="Descripción del plato" required></textarea>
+            <button type="submit">Agregar Plato</button>
+        </form>
+
+        <h4>Platos Disponibles</h4>
+        <div id="menu-list" class="admin"></div>
+    </div>
+
+    <footer class="footer-bottom">
+        <p>© 2024 Desarrollado por Inovixe. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

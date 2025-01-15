@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión - Luna Mágica</title>
+    <link rel="stylesheet" href="styles-login.css">
+    <link rel="icon" href="Imagenes/Red and Yellow Catering Flat Illustrative Food Place Logo (1).png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.0.0/tsparticles.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="login.js"></script>
+</head>
+
+<body>
+
+    <div id="login-container">
+        <h3>🔑 Iniciar sesión en el Administrador</h3>
+        
+        <form id="login-form">
+            <input type="email" id="email" placeholder="Correo electrónico" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar sesión</button>
+        </form>
+        
+        <p id="error-message" style="color:red; display:none;">Correo o contraseña incorrectos.</p>
+    </div>
+
+    <footer class="footer-bottom">
+        <p>© 2024 Desarrollado por Inovixe. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>
