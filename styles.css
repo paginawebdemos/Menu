@@ -51,10 +51,8 @@ body {
   text-align: center;
 }
 
-/* Contenedor principal de la página (se aplica la perspectiva 3D) */
-body {
-  perspective: 1500px; /* Establece el área 3D */
-}
+
+  
 
 /* Estilos para el contenedor de bienvenida */
 #welcome-container {
@@ -70,6 +68,7 @@ body {
   opacity: 0;
   transform: rotateY(90deg) translateZ(-500px); /* Empieza fuera de la vista, girado */
   animation: fadeInUp 1s ease-out forwards; /* Animación de entrada */
+  perspective: 1500px; /* Establece el área 3D */
 }
 
 /* Animación de entrada con giro desde atrás hacia adelante */
