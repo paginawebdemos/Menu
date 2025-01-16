@@ -5,6 +5,7 @@ body {
   padding: 0;
   background-color: #000000;
   color: rgb(0, 0, 0);
+    perspective: 1500px; /* Establece el área 3D */
 }
 
 /* Animaciones */
@@ -68,7 +69,6 @@ body {
   opacity: 0;
   transform: rotateY(90deg) translateZ(-500px); /* Empieza fuera de la vista, girado */
   animation: fadeInUp 1s ease-out forwards; /* Animación de entrada */
-  perspective: 1500px; /* Establece el área 3D */
 }
 
 /* Animación de entrada con giro desde atrás hacia adelante */
