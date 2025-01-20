@@ -1,1 +1,151 @@
-let _0x3d1b22=_0x6691;!function($,x){let e=_0x6691,a=$();for(;;)try{let t=parseInt(e(507))/1+parseInt(e(500))/2*(parseInt(e(489))/3)+-parseInt(e(497))/4*(parseInt(e(522))/5)+parseInt(e(509))/6+parseInt(e(490))/7*(-parseInt(e(496))/8)+-parseInt(e(542))/9+-parseInt(e(525))/10;if(742167===t)break;a.push(a.shift())}catch(i){a.push(a.shift())}}(_0x1da1,742167);import{initializeApp as $}from"https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";import{getFirestore as x,collection as e,getDocs as a,addDoc as t,deleteDoc as i,doc as d}from"https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";let firebaseConfig={apiKey:_0x3d1b22(532),authDomain:_0x3d1b22(494),projectId:_0x3d1b22(534),storageBucket:_0x3d1b22(508),messagingSenderId:"915765095360",appId:"1:915765095360:web:689905fc5455bdbb76f625"},app=$(firebaseConfig),db=x(app),addDishForm=document[_0x3d1b22(520)](_0x3d1b22(511)),menuList=document.getElementById(_0x3d1b22(539)),dishPriceInput=document[_0x3d1b22(520)]("dish-price");async function uploadToCloudinary($){let x=_0x3d1b22,e=x(528),a=new FormData;a[x(529)]("file",$),a.append(x(543),"ml_default");try{let t=await fetch(e,{method:x(527),body:a}),i=await t.json();return i[x(498)]}catch(d){throw console[x(513)](x(540),d),d}}async function addDish($,x,a,i,d){await t(e(db,_0x3d1b22(536)),{name:$,category:x,price:"$"+a,img:i,description:d}),loadMenu()}function _0x6691($,x){let e=_0x1da1();return(_0x6691=function($,x){return e[$-=489]})($,x)}async function loadMenu(){let $=_0x3d1b22,x=await a(e(db,$(536)));menuList[$(491)]="",x[$(505)](x=>{let e=$,a=x.data(),t=document[e(514)](e(516));t[e(537)][e(530)](e(492)),t.innerHTML=e(538)+a[e(531)]+e(493)+a[e(533)]+e(523)+a[e(533)]+e(526)+a[e(510)]+"</p>\n            <p><strong>Categor\xeda:</strong> "+a[e(512)]+"</p>\n            <p><strong>Descripci\xf3n:</strong> "+a[e(521)]+"</p>\n            <button onclick=\"deleteDish('"+x.id+"')\">Eliminar</button>\n        ",menuList[e(503)](t)})}function _0x1da1(){let $=["menu-list","Error al subir la imagen:","value","3914118YjrJcD","upload_preset","3SOLPLd","2590cEMUwF","innerHTML","dish-card",'" alt="',"luna-5a497.firebaseapp.com","Error al agregar el plato. Int\xe9ntalo nuevamente.","11208vKrhfV","332CNyWUC","secure_url","preventDefault","2697864XGvkzS","submit","dish-name","appendChild","addEventListener","forEach","files","1362227doUpMV","luna-5a497.firebasestorage.app","6356112Nbzhxj","price","add-dish-form","category","error","createElement","deleteDish","div","reset","startsWith","trim","getElementById","description","76025qlHWXx",'" width="100">\n            <h5>',"Plato agregado correctamente.","8130570PDrPqT","</h5>\n            <p><strong>Precio:</strong> ","POST","https://api.cloudinary.com/v1_1/dmlex134e/image/upload","append","add","img","AIzaSyBIe6_4rj47XgSWHFVGpk04qB7JgOJIhrI","name","luna-5a497","dish-description","menu","classList",'\n            <img src="'];return(_0x1da1=function(){return $})()}window[_0x3d1b22(515)]=async function($){await i(d(db,_0x3d1b22(536),$)),loadMenu()},dishPriceInput[_0x3d1b22(504)]("blur",()=>{let $=_0x3d1b22;dishPriceInput[$(541)]&&!dishPriceInput[$(541)][$(518)]("$")&&(dishPriceInput[$(541)]="$"+dishPriceInput.value.trim())}),addDishForm.addEventListener(_0x3d1b22(501),async $=>{let x=_0x3d1b22;$[x(499)]();let e=document[x(520)](x(502))[x(541)],a=document.getElementById("dish-category")[x(541)],t=dishPriceInput[x(541)].replace("$","")[x(519)](),i=document.getElementById("dish-img-upload"),d=document[x(520)](x(535)).value,r=i[x(506)][0];if(!r){alert("Por favor, selecciona una imagen para el plato.");return}try{let _=await uploadToCloudinary(r);await addDish(e,a,t,_,d),addDishForm[x(517)](),alert(x(524))}catch(n){alert(x(495))}}),loadMenu(),loadMenu(),loadMenu(),loadMenu();
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAComd7ODTKPQlQo5TqxESiY0qdZSyi_Eg",
+    authDomain: "tecno-37900.firebaseapp.com",
+    projectId: "tecno-37900",
+    storageBucket: "tecno-37900.firebasestorage.app",
+    messagingSenderId: "450833523787",
+    appId: "1:450833523787:web:10d9579152e9ddc41c99ce"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const loginSection = document.getElementById("login-section");
+const adminSection = document.getElementById("admin-content");
+const errorMessage = document.getElementById("error-message");
+const logoutBtn = document.getElementById("logout-btn");
+
+const addDishForm = document.getElementById("add-dish-form");
+const menuList = document.getElementById("menu-list");
+const dishPriceInput = document.getElementById("dish-price");
+
+// Función para manejar el inicio de sesión
+document.getElementById("login-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            loginSection.style.display = "none";
+            adminSection.style.display = "block";
+            loadMenu();
+        })
+        .catch((error) => {
+            errorMessage.style.display = "block";
+        });
+});
+
+// Verificar el estado de autenticación del usuario
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        loginSection.style.display = "none";
+        adminSection.style.display = "block";
+        loadMenu();
+    } else {
+        loginSection.style.display = "block";
+        adminSection.style.display = "none";
+    }
+});
+
+// Función para cargar el menú
+async function loadMenu() {
+    const querySnapshot = await getDocs(collection(db, "menu"));
+    menuList.innerHTML = ''; // Limpiar la lista antes de mostrarla
+
+    querySnapshot.forEach((doc) => {
+        const dish = doc.data();
+        const dishDiv = document.createElement("div");
+        dishDiv.classList.add("dish-card");
+        dishDiv.innerHTML = `
+            <img src="${dish.img}" alt="${dish.name}" width="100">
+            <h5>${dish.name}</h5>
+            <p><strong>Precio:</strong> ${dish.price}</p>
+            <p><strong>Categoría:</strong> ${dish.category}</p>
+            <p><strong>Descripción:</strong> ${dish.description}</p>
+            <button onclick="deleteDish('${doc.id}')">Eliminar</button>
+        `;
+        menuList.appendChild(dishDiv);
+    });
+}
+
+window.deleteDish = async function (id) {
+    await deleteDoc(doc(db, "menu", id));
+    loadMenu();
+};
+
+// Agregar un nuevo plato
+async function addDish(name, category, price, img, description) {
+    await addDoc(collection(db, "menu"), {
+        name: name,
+        category: category,
+        price: `$${price}`,
+        img: img,
+        description: description
+    });
+    loadMenu();
+}
+
+// Subir imagen a Cloudinary
+async function uploadToCloudinary(file) {
+    const url = `https://api.cloudinary.com/v1_1/dcmldbl5k/image/upload`;
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "my_images");
+
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            body: formData,
+        });
+        const data = await response.json();
+        return data.secure_url;
+    } catch (error) {
+        console.error("Error al subir la imagen:", error);
+        throw error;
+    }
+}
+
+addDishForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = document.getElementById("dish-name").value;
+    const category = document.getElementById("dish-category").value;
+    const price = dishPriceInput.value.replace("$", "").trim();
+    const fileInput = document.getElementById("dish-img-upload");
+    const description = document.getElementById("dish-description").value;
+
+    const file = fileInput.files[0];
+    if (!file) {
+        alert("Por favor, selecciona una imagen para el producto.");
+        return;
+    }
+
+    try {
+        const imgURL = await uploadToCloudinary(file);
+        await addDish(name, category, price, imgURL, description);
+        addDishForm.reset();
+        alert("Producto agregado correctamente.");
+    } catch (error) {
+        alert("Error al agregar el producto. Inténtalo nuevamente.");
+    }
+});
+
+// Función para cerrar sesión
+logoutBtn.addEventListener("click", () => {
+    signOut(auth).then(() => {
+        // Limpiar los campos de correo y contraseña
+        document.getElementById("email").value = '';
+        document.getElementById("password").value = '';
+
+        // Al cerrar sesión, redirige al login
+        loginSection.style.display = "block";
+        adminSection.style.display = "none";
+    }).catch((error) => {
+        console.error("Error al cerrar sesión:", error);
+    });
+});
