@@ -3,12 +3,12 @@ import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAComd7ODTKPQlQo5TqxESiY0qdZSyi_Eg",
-    authDomain: "tecno-37900.firebaseapp.com",
-    projectId: "tecno-37900",
-    storageBucket: "tecno-37900.firebasestorage.app",
-    messagingSenderId: "450833523787",
-    appId: "1:450833523787:web:10d9579152e9ddc41c99ce"
+  apiKey: "AIzaSyBIe6_4rj47XgSWHFVGpk04qB7JgOJIhrI",
+  authDomain: "luna-5a497.firebaseapp.com",
+  projectId: "luna-5a497",
+  storageBucket: "luna-5a497.firebasestorage.app",
+  messagingSenderId: "915765095360",
+  appId: "1:915765095360:web:689905fc5455bdbb76f625"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -93,10 +93,10 @@ async function addDish(name, category, price, img, description) {
 
 // Subir imagen a Cloudinary
 async function uploadToCloudinary(file) {
-    const url = `https://api.cloudinary.com/v1_1/dcmldbl5k/image/upload`;
+   const url = `https://api.cloudinary.com/v1_1/dmlex134e/image/upload`;
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "my_images");
+    formData.append("upload_preset", "ml_default");
 
     try {
         const response = await fetch(url, {
